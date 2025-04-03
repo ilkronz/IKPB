@@ -1,0 +1,182 @@
+/* --- Base --- */
+body {
+    font-family: sans-serif;
+    display: flex; /* Keep flex for centering content */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Removed static background color/image - video handles background */
+    background-color: #000; /* Fallback color */
+    color: #e0e0e0; /* Default light text for dark mode */
+    margin: 0;
+    position: relative; /* Needed for pseudo-element and video positioning */
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* --- Background Video Styling --- */
+#bg-video {
+    position: fixed; /* Cover the entire viewport */
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Place behind EVERYTHING */
+    transform: translateX(-50%) translateY(-50%); /* Center the video */
+    /* Optional: Add a slight filter to the video itself if needed */
+    /* filter: brightness(0.8); */
+}
+
+/* --- Frosted Glass Layer --- */
+body::after {
+    content: '';
+    position: absolute; /* Covers viewport */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1; /* !!! Above video (z-index: -1), below content (z-index: 10+) !!! */
+    pointer-events: none;
+
+    /* Frosted effect using backdrop-filter */
+    backdrop-filter: blur(6px) contrast(80%) saturate(130%);
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle haze */
+
+    /* --- Alternative Frost (No backdrop-filter) --- */
+    /* Uncomment below and comment above if backdrop-filter fails */
+    /*
+    background:
+        linear-gradient(rgba(250, 250, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 250, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    background-size: 4px 4px, 4px 4px, 100% 100%;
+    */
+}
+
+
+/* --- Container and Content Styling (Dark Mode) --- */
+/* Adjust colors/styles to match video/cyberpunk feel if desired */
+.container {
+    text-align: center;
+    /* Using a dark, semi-transparent background works well over video */
+    background-color: rgba(20, 20, 30, 0.75); /* Dark semi-transparent */
+    padding: 40px 60px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(100, 100, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Needed for stacking */
+    z-index: 10; /* Above frost layer */
+    border: 1px solid rgba(180, 180, 255, 0.2); /* Subtle border */
+    color: #e5e5ff; /* Light text color */
+}
+
+
+#quote-container {
+    margin-bottom: 30px;
+    min-width: 300px;
+}
+
+#quote-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    /* Match container text color or choose a highlight */
+    color: #f0f0f0;
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    transition: border-color 0.3s ease;
+}
+
+#quote-text:hover {
+   border-color: rgba(255, 255, 255, 0.5);
+}
+
+#quote-input {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #f0f0f0;
+    background-color: #333;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#stats-container {
+    margin-top: 20px;
+    background-color: rgba(30, 30, 40, 0.85); /* Slightly different dark shade */
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+    min-width: 250px;
+}
+
+#stats-container h2, #stats-container h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+#stats-container p {
+    margin: 5px 0;
+    color: #bbb;
+}
+
+#stats-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#stats-container li {
+     margin-bottom: 3px;
+     color: #bbb;
+}
+
+
+#archive-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    background-color: #5a6268;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 20; /* Ensure button is clickable and above frost */
+    transition: background-color 0.2s ease;
+}
+
+#archive-button:hover {
+    background-color: #6c757d;
+}
+
+/* --- Footer Styling --- */
+#footer-credit {
+    position: absolute;
+    bottom: 15px; /* Slightly more space from bottom */
+    width: 100%;
+    text-align: center;
+    /* --- Increased font size (Again) --- */
+    font-size: 1.3em; /* Adjusted from 1.1em - make larger if needed */
+    color: #aaa;
+    z-index: 10; /* Above frost layer */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+}
+
+#footer-credit a { /* Style for the link */
+    color: #ccc; /* Link color */
+    text-decoration: none;
+}
+
+#footer-credit a:hover {
+    color: #fff; /* Link hover color */
+    text-decoration: underline;
+}

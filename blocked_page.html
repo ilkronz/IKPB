@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Guard</title>
+    <link rel="stylesheet" href="blocked_page.css">
+</head>
+<body>
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="space.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <button id="archive-button">View Stats Archive</button>
+    <div class="container">
+        <div id="quote-container">
+            <p id="quote-text">Loading quote...</p>
+            <input type="text" id="quote-input" style="display: none;">
+        </div>
+        <div id="stats-container">
+            <h2>Today's Stats</h2>
+            <p style="font-size: 0.8em; opacity: 0.7;">(Nampa, ID - Wed, Apr 2, 2025, 10:36 PM MDT)</p>
+            <p id="youtube-time">YouTube Time: Loading...</p>
+            <p id="x-time">X/Twitter Time: Loading...</p>
+            <h3>Blocked Site Access Attempts:</h3>
+            <ul id="blocked-attempts">
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer id="footer-credit">
+        Created by Isaac <a href="https://kro.nz" target="_blank" rel="noopener noreferrer">Kro.nz</a>
+    </footer>
+    <script src="blocked_page.js"></script>
+</body>
+</html>
